@@ -1,0 +1,25 @@
+version: '3'
+services:
+  configsvr:
+    image: mongo:6.0
+    container_name: configsvr
+    command: ["--configsvr", "--replSet", "configrs"]
+    ports:
+      - "27019:27019"
+
+  mongodb-shard1:
+    image: mongo:6.0
+    container_name: mongodb-shard1
+    command: ["--shardsvr"]
+
+  mongodb-shard2:
+    image: mongo:6.0
+    container_name: mongodb-shard2
+    command: ["--shardsvr"]
+
+  mongos:
+    image: mongo:6.0
+    container_name: mongos
+    command: ["mongos", "--configdb", "configrs/configsvr:27019"]
+    ports:
+      - "27017:27017"
