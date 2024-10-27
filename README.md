@@ -26,7 +26,7 @@ Navigate to the `replica-set/` folder and follow the assignment instructions.
 
 ```bash
 cd replica-set
-docker-compose up -d
+docker-compose up --wait
 ```
 
 Stop the replica set and remove the containers before starting the sharded cluster.
@@ -41,7 +41,7 @@ Navigate to the `sharded-cluster/` folder and follow the assignment instructions
 
 ```bash
 cd sharded-cluster
-docker-compose up -d
+docker-compose up --wait
 ```
 
 Stop the sharded cluster and remove the containers when you're done.
